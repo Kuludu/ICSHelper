@@ -1,5 +1,5 @@
 import Event
 
 
-def genEventsByWeeks():
+def genEventsByWeeks(paramenter: dict, weeks: list):
     pass
