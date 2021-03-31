@@ -14,8 +14,8 @@ class Calendar:
 
         return_string += "BEGIN:VCALENDAR\n"
 
-        for key, value in self.cal:
-            return_string += key + ":" + value
+        for key, value in self.cal.items():
+            return_string += key + ":" + value + "\n"
 
         for event in self.events:
             return_string += str(event)
