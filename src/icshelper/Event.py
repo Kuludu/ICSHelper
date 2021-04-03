@@ -1,22 +1,21 @@
 from uuid import uuid1
-import time
+import datetime
 
 
 class Event:
-    event = dict()
-
     def __init__(self, paramenter: dict):
-        self.event['DTSTART'] = paramenter['DTSTART']
-        self.event['DTEND'] = paramenter['DTEND']
-        self.event['DTSTAMP'] = time.strftime("%Y%m%dT%H%M%SZ", time.localtime())
+        self.event = dict()
+        self.TIMEZONE = "Asia/Shanghai"
+        self.event['DTSTART;TZID=' + self.TIMEZONE] = paramenter['DTSTART']
+        self.event['DTEND;TZID=' + self.TIMEZONE] = paramenter['DTEND']
+        self.event['DTSTAMP'] = datetime.datetime.now().strftime("%Y%m%dT%H%M%SZ")
         self.event['UID'] = str(uuid1())
-        self.event['CREATED'] = time.strftime("%Y%m%dT%H%M%SZ", time.localtime())
+        self.event['CREATED'] = datetime.datetime.now().strftime("%Y%m%dT%H%M%SZ")
         self.event['DESCRIPTION'] = paramenter['DESCRIPTION']
-        self.event['LAST-MODIFIED'] = time.strftime("%Y%m%dT%H%M%SZ", time.localtime())
-        self.event['LOCATION'] = paramenter['LOCATION']
+        self.event['LAST-MODIFIED'] = datetime.datetime.now().strftime("%Y%m%dT%H%M%SZ")
         self.event['STATUS'] = "CONFIRMED"
         self.event['SUMMARY'] = paramenter['SUMMARY']
-        self.event['TRANSP'] = "TRANSPARENT"
+        self.event['TRANSP'] = "OPAQUE"
 
     def __str__(self):
         return_string = str()
