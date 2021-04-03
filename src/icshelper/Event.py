@@ -10,11 +10,10 @@ class Event:
         self.event['DTEND'] = paramenter['DTEND']
         self.event['DTSTAMP'] = time.strftime("%Y%m%dT%H%M%SZ", time.localtime())
         self.event['UID'] = str(uuid1())
-        self.event['CREATED'] = paramenter['CREATED']
+        self.event['CREATED'] = time.strftime("%Y%m%dT%H%M%SZ", time.localtime())
         self.event['DESCRIPTION'] = paramenter['DESCRIPTION']
         self.event['LAST-MODIFIED'] = time.strftime("%Y%m%dT%H%M%SZ", time.localtime())
         self.event['LOCATION'] = paramenter['LOCATION']
-        self.event['SEQUENCE'] = paramenter['SEQUENCE']
         self.event['STATUS'] = "CONFIRMED"
         self.event['SUMMARY'] = paramenter['SUMMARY']
         self.event['TRANSP'] = "TRANSPARENT"
